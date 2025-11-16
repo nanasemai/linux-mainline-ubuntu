@@ -4768,6 +4768,18 @@
 			interconnects = <&mem_noc MASTER_GFX3D 0 &mem_noc SLAVE_EBI1 0>;
 			interconnect-names = "gfx-mem";
 
+			/* KGSL specific properties */
+			qcom,chipid = <0x06030000>;
+			qcom,initial-pwrlevel = <5>;
+			qcom,idle-timeout = <80>;
+			qcom,no-nap;
+			qcom,highest-bank-bit = <15>;
+			qcom,min-access-length = <32>;
+			qcom,ubwc-mode = <2>;
+			qcom,snapshot-size = <1048576>;
+			qcom,gpu-quirk-hfi-use-reg;
+			qcom,gpu-quirk-secvid-set-once;
+
 			status = "disabled";
 
 			gpu_opp_table: opp-table {
