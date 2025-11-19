@@ -1,7 +1,7 @@
 subdir-ccflags-y += -Wno-packed-bitfield-compat
-subdir-ccflags-y += -Wno-enum-int-mismatch
+subdir-ccflags-y += -Wno-enum-int-mismatch  # Commented out due to unsupported compiler option
 
-export MACHINE = qcm6490
+export MACHINE = sdm845
 export KERNEL_ROOT=/
 
 ###
@@ -12,13 +12,9 @@ obj-y += graphics/
 
 ###
 
-obj-y += camera-qcm6490/
-obj-y += camera-qcs9100/
-
-###
-
-obj-y += qps615/
-
+#obj-y += camera-qcm6490/
+#obj-y += camera-qcs9100/
+#obj-y += camera-sdm845/
 
 ###
 
