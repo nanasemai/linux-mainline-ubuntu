@@ -275,15 +275,7 @@ static void dhd_blk_tsfl_handler(struct work_struct * work);
 #endif /* defined(DHD_TX_PROFILE) */
 
 #ifdef CSI_SUPPORT
-/* Protect against dhd_bus_chip_id macro definition in dhd_csi.c */
-#ifdef dhd_bus_chip_id
-#undef dhd_bus_chip_id
-#endif /* dhd_bus_chip_id */
 #include <dhd_csi.h>
-/* Restore function declaration */
-#ifdef dhd_bus_chip_id
-#undef dhd_bus_chip_id
-#endif /* dhd_bus_chip_id */
 #endif /* CSI_SUPPORT */
 
 #include <dhd_plat.h>
@@ -2267,9 +2259,6 @@ int dhd_process_cid_mac(dhd_pub_t *dhdp, bool prepost)
 	int ret = BCME_OK;
 #ifndef BCMDBUS
 	chipid = dhd_bus_chip_id(dhdp);
-#else
-	/* For BCMDBUS configuration, provide a default implementation */
-	chipid = 0;
 #endif /* BCMDBUS */
 	if (prepost) { /* pre process */
 		ret = dhd_alloc_cis(dhdp);
@@ -9219,8 +9208,6 @@ dhd_attach(osl_t *osh, struct dhd_bus *bus, uint bus_hdrlen
 	wifi_adapter_info_t *adapter = NULL;
 #elif defined(BCMDBUS)
 	wifi_adapter_info_t *adapter = data;
-#else
-	wifi_adapter_info_t *adapter = NULL;
 #endif
 #ifdef SHOW_LOGTRACE
 	int ret;
