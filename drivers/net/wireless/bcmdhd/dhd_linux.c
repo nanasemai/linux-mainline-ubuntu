@@ -275,7 +275,15 @@ static void dhd_blk_tsfl_handler(struct work_struct * work);
 #endif /* defined(DHD_TX_PROFILE) */
 
 #ifdef CSI_SUPPORT
+/* Protect against dhd_bus_chip_id macro definition in dhd_csi.c */
+#ifdef dhd_bus_chip_id
+#undef dhd_bus_chip_id
+#endif /* dhd_bus_chip_id */
 #include <dhd_csi.h>
+/* Restore function declaration */
+#ifdef dhd_bus_chip_id
+#undef dhd_bus_chip_id
+#endif /* dhd_bus_chip_id */
 #endif /* CSI_SUPPORT */
 
 #include <dhd_plat.h>
