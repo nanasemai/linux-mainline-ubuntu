@@ -2259,6 +2259,9 @@ int dhd_process_cid_mac(dhd_pub_t *dhdp, bool prepost)
 	int ret = BCME_OK;
 #ifndef BCMDBUS
 	chipid = dhd_bus_chip_id(dhdp);
+#else
+	/* For BCMDBUS configuration, provide a default implementation */
+	chipid = 0;
 #endif /* BCMDBUS */
 	if (prepost) { /* pre process */
 		ret = dhd_alloc_cis(dhdp);
@@ -9208,6 +9211,8 @@ dhd_attach(osl_t *osh, struct dhd_bus *bus, uint bus_hdrlen
 	wifi_adapter_info_t *adapter = NULL;
 #elif defined(BCMDBUS)
 	wifi_adapter_info_t *adapter = data;
+#else
+	wifi_adapter_info_t *adapter = NULL;
 #endif
 #ifdef SHOW_LOGTRACE
 	int ret;
