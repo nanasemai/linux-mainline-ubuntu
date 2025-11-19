@@ -360,9 +360,19 @@
 
 &gpu {
 	status = "okay";
+	vdd-supply = <&gpucc GPU_GX_GDSC>;
+	vddcx-supply = <&gpucc GPU_CX_GDSC>;
+	qcom,pwr-rail-always-on;
+	qcom,compute-capable = <1>;
+	qcom,chipid = <0x06030002>;
+
+	clocks = <&gpucc GPU_CC_CX_GMU_CLK>,
+		 <&gpucc GPU_CC_CXO_CLK>;
+	clock-names = "gmu", "cxo";
+
 	zap-shader {
 		memory-region = <&gpu_mem>;
-		firmware-name = "qcom/sdm845/oneplus6/a630_zap.mbn";
+		firmware-name = "qcom/sdm845/oneplus6/a630_zap.mbn", "qcom/a630_sqe.fw";
 	};
 };
 
