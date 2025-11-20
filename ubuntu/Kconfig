@@ -13,8 +13,4 @@ config UBUNTU_ODM_DRIVERS
 # your new entry and maintain the six lines below.
 #
 
-##
-##
-##
-
 endmenu
